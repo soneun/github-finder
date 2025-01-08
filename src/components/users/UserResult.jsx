@@ -4,11 +4,11 @@ import Spinner from "../layout/Spinner";
 import GithubContext from "../../context/github/GithubContext";
 
 function UserResult() {
-  const { users, loading, fetchUsers } = useContext(GithubContext);
+  const { users, loading } = useContext(GithubContext);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
   if (loading) {
     return <Spinner />;
   } else {
