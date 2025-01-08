@@ -28,11 +28,6 @@ function Navbar({ title }) {
   );
 }
 
-//프랍스 타이틀 입력 안했을 때 기본 깃허브 파인더 입력
-Navbar.defaultProps = {
-  title: "Github Finder",
-};
-
 //프랍스 title 타입은 문자열
 Navbar.propTypes = {
   title: PropTypes.string,
