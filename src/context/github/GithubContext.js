@@ -45,17 +45,25 @@ export const GithubProvider = ({ children }) => {
         setLoading(false); //데이터 로딩완료
       })
       .catch((err) => (window.location = "/notfound"));
+    getUserRepos(login);
   };
 
   //유저 공개리포 리스트
   const getUserRepos = (login) => {
     setLoading(true);
+    const params = new URLSearchParams({
+      sort: "created",
+      per_page: 10,
+    });
 
-    fetch(`${process.env.REACT_APP_GITHUB_URL}/users/${login}/repos`, {
-      headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
-      },
-    })
+    fetch(
+      `${process.env.REACT_APP_GITHUB_URL}/users/${login}/repos?${params}`,
+      {
+        headers: {
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setRepos(data);
@@ -73,7 +81,6 @@ export const GithubProvider = ({ children }) => {
         searchUsers,
         getUser,
         clearUsers,
-        getUserRepos,
       }}
     >
       {children}
