@@ -17,14 +17,12 @@ function UserItem({ user }) {
             className="text-base-content text-opacity-40"
             to={`/user/${user.login}`}
           >
-            프로파일 보기
+            프로필 보기
           </Link>
         </div>
       </div>
     </div>
   );
 }
-
-UserItem.propTypes = {};
 
 export default UserItem;

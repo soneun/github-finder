@@ -9,23 +9,24 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  //테스트 유저 리스트
-  const fetchUsers = () => {
+  //키워드로 유저찾기
+  const searchUsers = (text) => {
     setLoading(true);
-    fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
+    const params = new URLSearchParams({ q: text });
+    fetch(`${process.env.REACT_APP_GITHUB_URL}/search/users?${params}`, {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setUsers(data);
+        setUsers(data.items);
         setLoading(false); //데이터 로딩완료
       })
       .catch((err) => console.log(err));
   };
   return (
-    <GithubContext.Provider value={{ users, loading, fetchUsers }}>
+    <GithubContext.Provider value={{ users, loading, searchUsers }}>
       {children}
     </GithubContext.Provider>
   );
