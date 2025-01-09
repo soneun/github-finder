@@ -31,7 +31,7 @@ export const GithubProvider = ({ children }) => {
   const getUser = (login) => {
     setLoading(true);
 
-    fetch(`${process.env.REACT_APP_GITHUB_URL}/users${login}`, {
+    fetch(`${process.env.REACT_APP_GITHUB_URL}/users/${login}`, {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
       },
