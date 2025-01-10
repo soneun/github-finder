@@ -33,7 +33,7 @@ export const GithubProvider = ({ children }) => {
 
     fetch(`${process.env.REACT_APP_GITHUB_URL}/users/${login}`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
       },
     })
       .then((res) => res.json())
@@ -57,7 +57,7 @@ export const GithubProvider = ({ children }) => {
       `${process.env.REACT_APP_GITHUB_URL}/users/${login}/repos?${params}`,
       {
         headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
         },
       }
     )
