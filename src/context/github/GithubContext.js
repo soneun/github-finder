@@ -2,9 +2,6 @@ import { createContext, useState } from "react";
 
 const GithubContext = createContext();
 
-//깃허브 주소와 토큰 변수지정
-const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 //프로바이더가 전역으로 컨텍스트를 적용한다
 export const GithubProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
@@ -19,7 +16,7 @@ export const GithubProvider = ({ children }) => {
     const params = new URLSearchParams({ q: text });
     fetch(`${process.env.REACT_APP_GITHUB_URL}/search/users?${params}`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
       },
     })
       .then((res) => res.json())
