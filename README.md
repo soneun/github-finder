@@ -17,3 +17,5 @@ Github Finder App😊
 스타일링: CSS
 
 API: github API
+
+[배포주소] https://github-finder-soneun.netlify.app/
